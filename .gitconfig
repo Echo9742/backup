@@ -1,0 +1,9 @@
+[user]
+	name = echo
+	email = 2258289742@qq.com
+[color]
+	ui = true
+[alias]
+	ll = log --graph --pretty=oneline --abbrev-commit
+	com = commit -m
+	ss = status
