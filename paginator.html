@@ -1,25 +1,33 @@
-                                {% if data.has_previous %}
-                                    <a class="prev" href="{% url 'admin:test' %}?page=1">&lt;&lt;</a>
-                                    <a class="prev" href="{% url 'admin:test' %}?page=1">1</a>
-                                {% endif %}
+<div class="layui-card-body ">
+    <div class="page">
+        <div>
+            {% if data.has_previous %}
+                <a class="prev" href="{% url 'admin:test' %}?page=1">&lt;&lt;</a>
+                <a class="prev" href="{% url 'admin:test' %}?page={{ data.number|add:-1 }}">&lt;</a>
+                <a class="prev" href="{% url 'admin:test' %}?page=1">1</a>
+            {% endif %}
 
-                                {% if data.number != 1 and data.number != 2 %}
-                                    <span class="num">...</span>
-                                {% endif %}
+            {% if data.number != 1 and data.number != 2 %}
+                <span class="num">...</span>
+            {% endif %}
 
-                                {% if data.number|add:-1 > 1 %}
-                                    <a class="num" href="{% url 'admin:test' %}?page={{ data.number|add:-1 }}">{{ data.number|add:-1 }}</a>
-                                {% endif %}
-                                <span class="current">{{ data.number }}</span>
-                                {% if data.number < data.paginator.num_pages|add:-1 %}
-                                    <a class="num" href="{% url 'admin:test' %}?page={{ data.number|add:1 }}">{{ data.number|add:1 }}</a>
-                                {% endif %}
+            {% if data.number|add:-1 > 1 %}
+                <a class="num" href="{% url 'admin:test' %}?page={{ data.number|add:-1 }}">{{ data.number|add:-1 }}</a>
+            {% endif %}
+            <span class="current">{{ data.number }}</span>
+            {% if data.number < data.paginator.num_pages|add:-1 %}
+                <a class="num" href="{% url 'admin:test' %}?page={{ data.number|add:1 }}">{{ data.number|add:1 }}</a>
+            {% endif %}
 
-                                {% if data.number != data.paginator.num_pages|add:-1 and data.number != data.paginator.num_pages %}
-                                    <span class="num">...</span>
-                                {% endif %}
+            {% if data.number != data.paginator.num_pages|add:-1 and data.number != data.paginator.num_pages %}
+                <span class="num">...</span>
+            {% endif %}
 
-                                {% if data.has_next %}
-                                    <a class="next" href="{% url 'admin:test' %}?page={{ data.paginator.num_pages }}">{{ data.paginator.num_pages }}</a>
-                                    <a class="next" href="{% url 'admin:test' %}?page={{ data.paginator.num_pages }}">&gt;&gt;</a>
-                                {% endif %}
+            {% if data.has_next %}
+                <a class="next" href="{% url 'admin:test' %}?page={{ data.paginator.num_pages }}">{{ data.paginator.num_pages }}</a>
+                <a class="next" href="{% url 'admin:test' %}?page={{ data.number|add:1 }}">&gt;</a>
+                <a class="next" href="{% url 'admin:test' %}?page={{ data.paginator.num_pages }}">&gt;&gt;</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
